@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Sorcerer Realm - Mobile Sparkles</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0b090a;
+            overflow: hidden;
+            /* Prevents the phone from trying to scroll while you draw */
+            touch-action: none; 
+            font-family: serif;
+        }
+
+        #sparkle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #f1d38e;
+            text-align: center;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>SORCERER REALM</h1>
+    </div>
+
+    <canvas id="sparkle-canvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('sparkle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 4 + 1;
+                this.speedX = (Math.random() - 0.5) * 4;
+                this.speedY = (Math.random() - 0.5) * 4;
+                
+                // Colors inspired by the video: Gold, White, and Cyan
+                const colors = ['#f1d38e', '#ffffff', '#83c5be', '#ffb703'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                
+                this.opacity = 1;
+                this.gravity = 0.05; // Particles drift downward slightly
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY + this.gravity;
+                
+                // Slow the particles down (friction)
+                this.speedX *= 0.97;
+                this.speedY *= 0.97;
+
+                if (this.opacity > 0.01) this.opacity -= 0.015;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                
+                // Glowing aura effect
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function createParticles(x, y) {
+            for (let i = 0; i < 6; i++) {
+                particles.push(new Particle(x, y));
+            }
+        }
+
+        // --- Event Listeners ---
+
+        // Desktop (Mouse)
+        window.addEventListener('mousemove', (e) => {
+            createParticles(e.clientX, e.clientY);
+        });
+
+        // Mobile (Touch)
+        window.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            createParticles(touch.clientX, touch.clientY);
+        }, { passive: false });
+
+        window.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            createParticles(touch.clientX, touch.clientY);
+        });
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                if (particles[i].opacity <= 0.02) {
+                    particles.splice(i, 1);
+                    i--;
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
