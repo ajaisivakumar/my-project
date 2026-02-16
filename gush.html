@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorcerer Realm - Magic Trail</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0b090a; /* Darker, mystical background */
+            overflow: hidden;
+            font-family: 'Serif', 'Georgia', serif;
+        }
+
+        #magic-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #f1d38e; /* Gold color from the video */
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-section">
+        <h1>SORCERER REALM</h1>
+        <p>Wave your cursor to cast a spell...</p>
+    </div>
+
+    <canvas id="magic-canvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('magic-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                // Random size to create depth
+                this.size = Math.random() * 4 + 0.5;
+                // Movement: faster horizontal spread, slight upward "float"
+                this.speedX = (Math.random() - 0.5) * 3;
+                this.speedY = (Math.random() - 0.5) * 3;
+                
+                // Colors: mix of gold, cyan, and white for that "sorcerer" feel
+                const colors = ['#f1d38e', '#ffffff', '#83c5be', '#edf6f9'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                
+                this.opacity = 1;
+                this.gravity = 0.05; // Slight downward pull for a "dust" effect
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY + this.gravity;
+                
+                // Slow down the particles over time
+                this.speedX *= 0.98;
+                this.speedY *= 0.98;
+
+                // Fade out
+                if (this.opacity > 0.005) this.opacity -= 0.012;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                
+                // Add a "glow" effect around the particles
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = this.color;
+                
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        window.addEventListener('mousemove', function(e) {
+            // Create more particles per movement for a richer trail
+            for (let i = 0; i < 8; i++) {
+                particles.push(new Particle(e.x, e.y));
+            }
+        });
+
+        function animate() {
+            // Semi-transparent clear creates a slight "motion blur" trail
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                if (particles[i].opacity <= 0.01) {
+                    particles.splice(i, 1);
+                    i--;
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>

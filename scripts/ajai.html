@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>ToDo</title>
+    </head>
+    <body>
+        <h2>ToDO list</h2>
+        <ul id = 'todolist'>  </ul>
+        <input id = "addtask" type = "text" >
+        <button id = "submit" > Add Task</button>
+    </body>
+    <script>
+        let submit = document.getElementById("submit");
+        let addTask = document.getElementById("addtask");
+        let list = new Array();
+        let todolist = document.getElementById("todolist");
+
+
+
+
+        submit.addEventListener('click', (event) =>{
+                list.push(addTask.value);
+                todoList.innerHTML = '<li id ="'+list.length -1+'">'+addTask.value+'</li>';
+        });
+    </script>
+
+
+
+</html>

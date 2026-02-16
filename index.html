@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Sorcerer Realm - Mobile Ready</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0b090a;
+            overflow: hidden;
+            touch-action: none; /* Prevents the page from scrolling while touching the canvas */
+        }
+
+        #magic-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #f1d38e;
+            text-align: center;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1>TOUCH OR MOVE MOUSE</h1>
+    </div>
+
+    <canvas id="magic-canvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('magic-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 4 + 1;
+                this.speedX = (Math.random() - 0.5) * 3;
+                this.speedY = (Math.random() - 0.5) * 3;
+                const colors = ['#f1d38e', '#ffffff', '#83c5be'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.opacity = 1;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.opacity > 0.01) this.opacity -= 0.015;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        // Handle both Mouse and Touch
+        function createSparkles(x, y) {
+            for (let i = 0; i < 5; i++) {
+                particles.push(new Particle(x, y));
+            }
+        }
+
+        // Desktop Mouse Support
+        window.addEventListener('mousemove', (e) => {
+            createSparkles(e.x, e.y);
+        });
+
+        // Mobile Touch Support
+        window.addEventListener('touchmove', (e) => {
+            // Mobile can have multiple fingers, we just track the first one [0]
+            const touch = e.touches[0];
+            createSparkles(touch.clientX, touch.clientY);
+        }, { passive: false }); // passive: false allows us to prevent default scrolling if needed
+
+        window.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            createSparkles(touch.clientX, touch.clientY);
+        });
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                if (particles[i].opacity <= 0.02) {
+                    particles.splice(i, 1);
+                    i--;
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
