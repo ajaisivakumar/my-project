@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EETA2K26</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
+
+body{
+    min-height:100vh;
+    color:white;
+    position:relative;
+    background: linear-gradient(135deg, #361794, #4c5fb2);
+}
+
+/* PARTICLES */
+#tsparticles{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:0;
+}
+
+.page{
+    position:relative;
+    z-index:1;
+}
+
+/* NAVBAR */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:28px 70px;
+    position:relative;
+}
+
+.logo{
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:.5px;
+}
+
+.logo span{opacity:.55;font-weight:500;}
+
+.menu-toggle{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.navlinks{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.navlinks a{
+    text-decoration:none;
+    color:rgb(187,199,203);
+    font-size:11px;
+    transition:.3s;
+}
+.navlinks a:hover{color:white;}
+
+.btn{
+    padding:8px 14px;
+    border-radius:30px;
+}
+
+.register{
+    background:linear-gradient(180deg,#122b56,#081b39);
+    border:none;
+    color:white;
+}
+.register:hover{
+    background:#0866f2;
+    box-shadow:0 0 8px rgba(8,102,242,.7);
+}
+
+.brochure{
+    border:1px solid rgba(255,255,255,.35);
+}
+
+/* HERO */
+
+.hero{text-align:center;padding-top:25px;}
+
+.pill{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.18);
+    padding:10px 22px;
+    background:rgba(255,255,255,.04);
+    color:#cdd6e7;
+    font-size:10px;
+}
+.pill::before{
+    content:"";
+    width:8px;height:8px;
+    background:#3da1ff;
+    border-radius:50%;
+}
+
+.title{
+    margin-top:25px;
+    font-size:60px;
+    font-weight:700;
+    letter-spacing:2px;
+    color:#6fb0f6;
+    opacity:.4;
+}
+.title span{font-weight:400;opacity:.55;margin-left:12px;}
+
+.sub{margin-top:15px;font-size:15px;color:rgba(255,255,255,.55);}
+.tagline{margin-top:13px;font-size:20px;font-weight:800;}
+
+.meta{
+    margin-top:26px;
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    font-size:10px;
+    color:rgba(255,255,255,.65);
+}
+
+.actions{
+    margin-top:36px;
+    display:flex;
+    justify-content:center;
+    gap:18px;
+}
+
+.primary{
+    background:linear-gradient(180deg,#122b56,#081b39);
+    border:none;
+    color:white;
+    padding:8px 14px;
+    border-radius:30px;
+    font-size:11px;
+}
+.primary:hover{background:#0866f2;box-shadow:0 0 8px rgba(8,102,242,.7);}
+
+.outline{
+    background:transparent;
+    border:1px solid rgba(255,255,255,.4);
+    color:white;
+    padding:8px 14px;
+    border-radius:30px;
+    font-size:11px;
+}
+.outline:hover{background:rgba(255,255,255,.05);}
+
+.stats{
+    margin-top:27px;
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    text-align:center;
+}
+.stats h2{font-size:16px;font-weight:900;}
+.stats p{margin-top:6px;opacity:.3;}
+
+/* 📱 MOBILE */
+
+@media (max-width:768px){
+
+nav{
+    padding:18px 25px;
+}
+
+.menu-toggle{
+    display:block;
+    position:absolute;
+    right:25px;
+}
+
+.navlinks{
+    position:absolute;
+    top:65px;
+    left:0;
+    width:100%;
+    flex-direction:column;
+    background:rgba(15,18,40,.96);
+    backdrop-filter:blur(10px);
+    padding:25px 0;
+    gap:18px;
+    display:none;
+}
+
+.navlinks.show{
+    display:flex;
+}
+
+.title{font-size:36px;}
+.tagline{font-size:16px;}
+
+.stats{
+    flex-wrap:wrap;
+    gap:22px;
+}
+
+.actions{
+    flex-direction:column;
+    gap:12px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="tsparticles"></div>
+
+<div class="page">
+
+<nav>
+
+<div class="logo">EETA<span>2K26</span></div>
+
+<div class="menu-toggle" id="menuToggle">☰</div>
+
+<div class="navlinks" id="navLinks">
+<a href="#">Home</a>
+<a href="#">Events</a>
+<a href="#">Schedule</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+<a class="btn register" href="#">Register</a>
+<a class="btn brochure" href="#">Brochure</a>
+</div>
+
+</nav>
+
+<section class="hero">
+
+<div class="pill">Department of Electronics And Communication Engineering</div>
+
+<div class="title">EETA <span>2K26</span></div>
+
+<div class="sub">Electronics Experts Technical Association</div>
+
+<div class="tagline">A National Level Technical Symposium</div>
+
+<div class="meta">
+<div>📅 March 04, 2026</div>
+<div>|</div>
+<div>📍 University Campus</div>
+</div>
+
+<div class="actions">
+<button class="primary">Register Now →</button>
+<button class="outline">View Events</button>
+</div>
+
+<div class="stats">
+<div><h2>6</h2><p>Events</p></div>
+<div><h2>300+</h2><p>Participants</p></div>
+<div><h2>15K</h2><p>Prize Pool</p></div>
+<div><h2>1</h2><p>Epic Day</p></div>
+</div>
+
+</section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
+
+<script>
+const isMobile = window.innerWidth <= 768;
+
+tsParticles.load({
+id:"tsparticles",
+options:{
+background:{color:"transparent"},
+fpsLimit:60,
+interactivity:{
+events:{onHover:{enable:true,mode:"repulse"}},
+modes:{repulse:{distance:100,duration:.4}}
+},
+particles:{
+color:{value:"#ffffff"},
+links:{color:"#ffffff",distance:120,enable:true,opacity:.15,width:1},
+move:{
+enable:true,
+speed:isMobile ? 2 : 5,
+direction:"none",
+random:false,
+straight:false,
+outModes:{default:"bounce"}
+},
+number:{density:{enable:true,area:800},value:isMobile ? 120 : 277},
+opacity:{value:.3},
+shape:{type:"circle"},
+size:{value:{min:1,max:3}}
+},
+detectRetina:true
+}
+});
+
+/* MOBILE MENU TOGGLE */
+const toggle=document.getElementById("menuToggle");
+const nav=document.getElementById("navLinks");
+
+toggle.addEventListener("click",()=>{
+nav.classList.toggle("show");
+});
+
+/* CLOSE MENU AFTER CLICK */
+document.querySelectorAll("#navLinks a").forEach(link=>{
+link.addEventListener("click",()=>{
+nav.classList.remove("show");
+});
+});
+</script>
+
+</body>
+</html>

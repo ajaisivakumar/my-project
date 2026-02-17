@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CETA2K26</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
+
+body{
+    min-height:100vh;
+    color:white;
+    background:
+    radial-gradient(circle at 50% 45%, rgba(60, 112, 150, 0.45) 0%, rgba(25,40,70,.45) 25%, transparent 45%),
+    linear-gradient(90deg,#06152c 0%, #0a1c36 45%, #0a1c36 55%, #06152c 100%);
+}
+
+/* NAVBAR */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:28px 70px;
+}
+
+.logo{
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:.5px;
+}
+
+.logo span{opacity:.55;font-weight:500;}
+
+.navlinks{
+    display:flex;
+    align-items:center;
+    gap:34px;
+    font-size:16px;
+    color:rgba(255,255,255,.75);
+}
+
+.navlinks a{
+    text-decoration:none;
+    color:rgb(187, 199, 203);
+    font-size: 9px;
+    transition: color 0.3s ease;
+}
+
+.navlinks a:hover{
+    color:rgba(7, 3, 3, 0.95);
+}
+
+.btn{
+    padding:11px 22px;
+    border-radius:26px;
+}
+
+.register{
+    background:#0f2346;
+    box-shadow:inset 0 0 0 0px rgba(255,255,255,.05);
+}
+
+.brochure{
+    border:1px solid rgba(255,255,255,.35);
+}
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    padding-top:25px;
+}
+
+/* department pill */
+
+.pill{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.18);
+    padding:10px 22px;
+    background:rgba(255,255,255,.04);
+    color:#cdd6e7;
+    font-size:10px;
+}
+
+.pill::before{
+    content:"";
+    width:8px;height:8px;
+    background:#3da1ff;
+    border-radius:50%;
+}
+
+/* MAIN TITLE */
+
+.title{
+    margin-top:25px;
+    font-size:60px;
+    font-weight:700;
+    letter-spacing:2px;
+    color: #6fb0f6;
+    opacity: 0.4;
+}
+
+.title span{
+    font-weight:400;
+    opacity:.55;
+    margin-left:12px;
+}
+
+/* SUBTITLE */
+
+.sub{
+    margin-top:15px;
+    font-size:15px;
+    color:rgba(255,255,255,.55);
+}
+
+/* TAGLINE */
+
+.tagline{
+    margin-top:13px;
+    font-size:20px;
+    font-weight:800;
+}
+
+/* DATE + LOCATION */
+
+.meta{
+    margin-top:26px;
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    font-size:10px;
+    color:rgba(255,255,255,.65);
+}
+
+/* ACTION BUTTONS */
+
+.actions{
+    margin-top:36px;
+    display:flex;
+    justify-content:center;
+    gap:18px;
+}
+
+.primary{
+    background:linear-gradient(180deg,#122b56,#081b39);
+    border:none;
+    color:white;
+    padding:8px 10px;
+    border-radius:30px;
+    font-size:10px;
+}
+
+.primary:hover{
+    background-color: #0866f2;
+    box-shadow: 0 0 8px rgba(8, 102, 242, 0.7);
+    toggleClass('hovered');
+}
+.outline{
+    background:transparent;
+    border:1px solid rgba(255,255,255,.4);
+    color:white;
+    padding:8px 10px;
+    border-radius:30px;
+    font-size:10px;
+}
+
+.outline:hover{
+    background:rgba(206, 7, 7, 0.05);
+    border-color:rgba(40, 46, 107, 0.75);
+}
+
+/* STATS */
+
+.stats{
+    margin-top:27px;
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    text-align:center;
+}
+
+.stats h2{
+    font-size:16px;
+    font-weight:1000;
+}
+
+.stats p{
+    margin-top:6px;
+    opacity:.300;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    nav{padding:20px;}
+    .navlinks{gap:18px;font-size:14px;}
+
+    .title{font-size:44px;}
+    .tagline{font-size:26px;}
+
+    .stats{
+        flex-wrap:wrap;
+        gap:40px;
+        margin-top:60px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">EETA<span>2K26</span></div>
+
+<div class="navlinks">
+<a href="#">Home</a>
+<a href="#">Events</a>
+<a href="#">Schedule</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+
+<a class="btn register" href="#">Register</a>
+<a class="btn brochure" href="#">Brochure</a>
+</div>
+
+</nav>
+
+<section class="hero">
+<div class="pill">Department of Electronics And Communication Engineering</div>
+
+<div class="title">EETA <span>2K26</span></div>
+
+<div class="sub">ELectronics Experts Technical Association</div>
+
+<div class="tagline">A National Level Technical Symposium</div>
+
+<div class="meta">
+<div>📅 March 04, 2026</div>
+<div>|</div>
+<div>📍 University Campus</div>
+</div>
+
+<div class="actions">
+<button class="primary">Register Now →</button>
+<button class="outline">View Events</button>
+</div>
+
+<div class="stats">
+<div><h2>6</h2><p>Events</p></div>
+<div><h2>300+</h2><p>Participants</p></div>
+<div><h2>15K</h2><p>Prize Pool</p></div>
+<div><h2>1</h2><p>Epic Day</p></div>
+</div>
+</section>
+
+</body>
+</html>
