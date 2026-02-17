@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EETA2K26</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
+
+body{
+  min-height:100vh;
+  color:white;
+  position:relative;
+  overflow-x:hidden;
+  background:linear-gradient(135deg,#361794,#4c5fb2);
+}
+
+/* PARTICLES */
+#tsparticles{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:0;
+}
+
+/* MAIN CONTAINER */
+.page{
+  position:relative;
+  z-index:1;
+  max-width:1200px;
+  margin:auto;
+  padding:0 20px;
+}
+
+/* NAVBAR */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:28px 0;
+  position:relative;
+}
+
+.logo{
+  font-weight:700;
+  font-size:18px;
+}
+.logo span{opacity:.6;font-weight:500;}
+
+/* HAMBURGER */
+.menu-toggle{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+  color:white;
+  z-index:1001;
+}
+
+/* NAV LINKS */
+.navlinks{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.navlinks a{
+  text-decoration:none;
+  color:rgb(187,199,203);
+  font-size:10px;
+  transition:.3s;
+}
+.navlinks a:hover{color:white;}
+
+.btn{
+  padding:8px 14px;
+  border-radius:30px;
+  font-size:12px;
+}
+.register{
+  background:linear-gradient(180deg,#4a72b2,#0f244a);
+  color:white;
+  border:none;
+}
+.register:hover{
+  background:#0866f2;
+  box-shadow:0 0 8px rgba(8,102,242,.7);
+}
+.brochure{
+  border:1px solid rgba(255,255,255,.35);
+}
+
+/* HERO */
+.hero{text-align:center;padding-top:10px;}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,.18);
+  padding:10px 22px;
+  background:rgba(255,255,255,.05);
+  color:#cdd6e7;
+  font-size:12px;
+}
+.pill::before{
+  content:"";
+  width:8px;height:8px;
+  background:#3da1ff;
+  border-radius:50%;
+}
+.title {
+  margin-top: 25px;
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #6fb0f6;
+  opacity: 1; /* corrected */
+}
+
+.title span {
+  font-weight: 400;
+  opacity: .7;
+  margin-left: 12px;
+}
+
+/* Apply hover/touch-triggered animation */
+.title:hover,
+.title:active {
+  animation: colorCycle 1.5s infinite;
+}
+
+@keyframes colorCycle {
+  0%   { color: red; }
+  33%  { color: green; }
+  66%  { color: blue; }
+  100% { color: red; }
+}
+.sub{margin-top:15px;font-size:18px;color:rgba(255,255,255,.65);}
+.tagline{margin-top:13px;font-size:24px;font-weight:800;}
+.meta{
+  margin-top:26px;
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  font-size:13px;
+  color:rgba(255,255,255,.75);
+}
+.actions{
+  margin-top:36px;
+  display:flex;
+  justify-content:center;
+  gap:18px;
+}
+.primary{
+  background:linear-gradient(180deg,#496dac,#6090dd);
+  border:none;
+  color:white;
+  padding:12px 24px;
+  border-radius:30px;
+  font-size:14px;
+}
+.primary:hover{
+  background:#0866f2;
+  box-shadow:0 0 10px rgba(8,102,242,.7);
+}
+.outline{
+  background:transparent;
+  border:1px solid rgba(255,255,255,.4);
+  color:white;
+  padding:12px 24px;
+  border-radius:30px;
+  font-size:14px;
+}
+.outline:hover{background:rgba(255,255,255,.06);}
+.stats{
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
+  gap:70px;
+  text-align:center;
+}
+.stats h2{font-size:22px;font-weight:900;}
+.stats p{margin-top:6px;opacity:.5;font-size:14px;}
+
+/* MOBILE */
+@media(max-width:768px){
+  .menu-toggle{display:block;}
+
+  .navlinks{
+    position:absolute;
+    top:70px;
+    right:0;
+    width:100%;
+    background:rgba(10,15,40,.97);
+    backdrop-filter:blur(10px);
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+    padding:25px 0;
+    display:none;
+    transition:transform .3s ease-in-out;
+    transform:translateY(-20px);
+    z-index:1000;
+  }
+
+  .navlinks.show{
+    display:flex;
+    transform:translateY(0);
+  }
+
+  .navlinks a{
+    font-size:16px;
+    color:#cdd6e7;
+  }
+
+  .btn{
+    width:80%;
+    text-align:center;
+  }
+
+  .hero{padding-top:10px;}
+  .title{font-size:38px;}
+  .tagline{font-size:18px;}
+  .sub{font-size:14px;}
+  .actions{flex-direction:column;gap:12px;}
+  .stats{gap:25px;flex-wrap:wrap;}
+}
+</style>
+</head>
+
+<body>
+<div id="tsparticles"></div>
+<div class="page">
+
+<nav>
+  <div class="logo">EETA<span>2K26</span></div>
+  <div class="menu-toggle" id="menuToggle">&#9776;</div>
+  <div class="navlinks" id="navLinks">
+    <a href="navlinksinmobile.html">Home</a>
+    <a href="events.html">Events</a>
+    <a href="#">Schedule</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a class="btn register" href="events.html">Register</a>
+    <a class="btn brochure" href="#">Brochure</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="pill">Department of Electronics And Communication Engineering</div>
+  <div class="title">EETA <span>2K26</span></div>
+  <div class="sub">Electronics Experts Technical Association</div>
+  <div class="tagline">A National Level Technical Symposium</div>
+  <div class="meta">
+    <div>📅 March 14, 2026</div>
+    <div>|</div>
+    <div>📍 University Campus</div>
+  </div>
+  <div class="actions">
+  <button class="primary">Register Now →</button>
+  <button class="outline" onclick="window.location.href='events.html'">View Events</button>
+</div>
+  <div class="stats">
+    <div><h2>6</h2><p>Events</p></div>
+    <div><h2>300+</h2><p>Participants</p></div>
+    <div><h2>15K</h2><p>Prize Pool</p></div>
+    <div><h2>1</h2><p>Epic Day</p></div>
+  </div>
+</section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
+<script>
+/* MOBILE MENU */
+const toggle=document.getElementById("menuToggle");
+const nav=document.getElementById("navLinks");
+
+toggle.onclick=()=>nav.classList.toggle("show");
+document.querySelectorAll(".navlinks a").forEach(link=>{
+  link.onclick=()=>nav.classList.remove("show");
+});
+
+/* PARTICLES */
+const isMobile=window.innerWidth<=768;
+tsParticles.load({
+  id:"tsparticles",
+  options:{
+    background:{color:"transparent"},
+    fpsLimit:60,
+    interactivity:{
+      events:{onHover:{enable:true,mode:"repulse"}},
+      modes:{repulse:{distance:100,duration:.4}}
+    },
+    particles:{
+      color:{value:"#ffffff"},
+      links:{color:"#ffffff",distance:120,enable:true,opacity:.15,width:1},
+      move:{enable:true,speed:isMobile?2:4,outModes:{default:"bounce"}},
+      number:{density:{enable:true,area:800},value:isMobile?90:300},
+      opacity:{value:.3},
+      shape:{type:"circle"},
+      size:{value:{min:1,max:3}}
+    },
+    detectRetina:true
+  }
+});
+</script>
+</body>
+</html>
