@@ -12,207 +12,215 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
 
 body{
-    min-height:100vh;
-    color:white;
-    position:relative;
-    background: linear-gradient(135deg, #361794, #4c5fb2);
+min-height:100vh;
+color:white;
+position:relative;
+overflow-x:hidden;
+background:linear-gradient(135deg,#361794,#4c5fb2);
 }
 
 /* PARTICLES */
 #tsparticles{
-    position:fixed;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    z-index:0;
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:0;
 }
 
+/* MAIN CONTAINER (FIXES GITHUB STRETCH ISSUE) */
 .page{
-    position:relative;
-    z-index:1;
+position:relative;
+z-index:1;
+max-width:1200px;
+margin:auto;
+padding:0 20px;
 }
 
 /* NAVBAR */
-
 nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:28px 70px;
-    position:relative;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:28px 0;
+position:relative;
 }
 
 .logo{
-    font-weight:700;
-    font-size:15px;
-    letter-spacing:.5px;
+font-weight:700;
+font-size:18px;
 }
 
-.logo span{opacity:.55;font-weight:500;}
+.logo span{opacity:.6;font-weight:500;}
 
+/* HAMBURGER */
 .menu-toggle{
-    display:none;
-    font-size:28px;
-    cursor:pointer;
+display:none;
+font-size:28px;
+cursor:pointer;
 }
 
+/* NAV LINKS */
 .navlinks{
-    display:flex;
-    align-items:center;
-    gap:20px;
+display:flex;
+align-items:center;
+gap:20px;
 }
 
 .navlinks a{
-    text-decoration:none;
-    color:rgb(187,199,203);
-    font-size:11px;
-    transition:.3s;
+text-decoration:none;
+color:rgb(187,199,203);
+font-size:13px;
+transition:.3s;
 }
+
 .navlinks a:hover{color:white;}
 
 .btn{
-    padding:8px 14px;
-    border-radius:30px;
+padding:8px 14px;
+border-radius:30px;
+font-size:12px;
 }
 
 .register{
-    background:linear-gradient(180deg,#122b56,#081b39);
-    border:none;
-    color:white;
+background:linear-gradient(180deg,#122b56,#081b39);
+color:white;
+border:none;
 }
+
 .register:hover{
-    background:#0866f2;
-    box-shadow:0 0 8px rgba(8,102,242,.7);
+background:#0866f2;
+box-shadow:0 0 8px rgba(8,102,242,.7);
 }
 
 .brochure{
-    border:1px solid rgba(255,255,255,.35);
+border:1px solid rgba(255,255,255,.35);
 }
 
 /* HERO */
-
-.hero{text-align:center;padding-top:25px;}
+.hero{text-align:center;padding-top:30px;}
 
 .pill{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    border-radius:20px;
-    border:1px solid rgba(255,255,255,.18);
-    padding:10px 22px;
-    background:rgba(255,255,255,.04);
-    color:#cdd6e7;
-    font-size:10px;
+display:inline-flex;
+align-items:center;
+gap:10px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,.18);
+padding:10px 22px;
+background:rgba(255,255,255,.05);
+color:#cdd6e7;
+font-size:12px;
 }
+
 .pill::before{
-    content:"";
-    width:8px;height:8px;
-    background:#3da1ff;
-    border-radius:50%;
+content:"";
+width:8px;height:8px;
+background:#3da1ff;
+border-radius:50%;
 }
 
 .title{
-    margin-top:25px;
-    font-size:60px;
-    font-weight:700;
-    letter-spacing:2px;
-    color:#6fb0f6;
-    opacity:.4;
+margin-top:25px;
+font-size:60px;
+font-weight:700;
+letter-spacing:2px;
+color:#6fb0f6;
+opacity:.45;
 }
-.title span{font-weight:400;opacity:.55;margin-left:12px;}
 
-.sub{margin-top:15px;font-size:15px;color:rgba(255,255,255,.55);}
-.tagline{margin-top:13px;font-size:20px;font-weight:800;}
+.title span{font-weight:400;opacity:.7;margin-left:12px;}
+
+.sub{margin-top:15px;font-size:18px;color:rgba(255,255,255,.65);}
+.tagline{margin-top:13px;font-size:24px;font-weight:800;}
 
 .meta{
-    margin-top:26px;
-    display:flex;
-    justify-content:center;
-    gap:22px;
-    font-size:10px;
-    color:rgba(255,255,255,.65);
+margin-top:26px;
+display:flex;
+justify-content:center;
+gap:22px;
+font-size:13px;
+color:rgba(255,255,255,.75);
 }
 
 .actions{
-    margin-top:36px;
-    display:flex;
-    justify-content:center;
-    gap:18px;
+margin-top:36px;
+display:flex;
+justify-content:center;
+gap:18px;
 }
 
 .primary{
-    background:linear-gradient(180deg,#122b56,#081b39);
-    border:none;
-    color:white;
-    padding:8px 14px;
-    border-radius:30px;
-    font-size:11px;
+background:linear-gradient(180deg,#122b56,#081b39);
+border:none;
+color:white;
+padding:12px 24px;
+border-radius:30px;
+font-size:14px;
 }
-.primary:hover{background:#0866f2;box-shadow:0 0 8px rgba(8,102,242,.7);}
+
+.primary:hover{
+background:#0866f2;
+box-shadow:0 0 10px rgba(8,102,242,.7);
+}
 
 .outline{
-    background:transparent;
-    border:1px solid rgba(255,255,255,.4);
-    color:white;
-    padding:8px 14px;
-    border-radius:30px;
-    font-size:11px;
+background:transparent;
+border:1px solid rgba(255,255,255,.4);
+color:white;
+padding:12px 24px;
+border-radius:30px;
+font-size:14px;
 }
-.outline:hover{background:rgba(255,255,255,.05);}
+
+.outline:hover{background:rgba(255,255,255,.06);}
 
 .stats{
-    margin-top:27px;
-    display:flex;
-    justify-content:center;
-    gap:60px;
-    text-align:center;
+margin-top:40px;
+display:flex;
+justify-content:center;
+gap:70px;
+text-align:center;
 }
-.stats h2{font-size:16px;font-weight:900;}
-.stats p{margin-top:6px;opacity:.3;}
 
-/* 📱 MOBILE */
+.stats h2{font-size:22px;font-weight:900;}
+.stats p{margin-top:6px;opacity:.5;font-size:14px;}
 
-@media (max-width:768px){
-
-nav{
-    padding:18px 25px;
-}
+/* MOBILE */
+@media(max-width:768px){
 
 .menu-toggle{
-    display:block;
-    position:absolute;
-    right:25px;
+display:block;
 }
 
 .navlinks{
-    position:absolute;
-    top:65px;
-    left:0;
-    width:100%;
-    flex-direction:column;
-    background:rgba(15,18,40,.96);
-    backdrop-filter:blur(10px);
-    padding:25px 0;
-    gap:18px;
-    display:none;
+position:absolute;
+top:70px;
+right:0;
+width:100%;
+background:rgba(10,15,40,.97);
+backdrop-filter:blur(10px);
+flex-direction:column;
+padding:25px 0;
+display:none;
 }
 
-.navlinks.show{
-    display:flex;
-}
+.navlinks.show{display:flex;}
 
-.title{font-size:36px;}
-.tagline{font-size:16px;}
+.hero{padding-top:10px;}
 
-.stats{
-    flex-wrap:wrap;
-    gap:22px;
-}
+.title{font-size:38px;}
+.tagline{font-size:18px;}
+.sub{font-size:14px;}
 
 .actions{
-    flex-direction:column;
-    gap:12px;
+flex-direction:column;
+gap:12px;
+}
+
+.stats{
+gap:25px;
+flex-wrap:wrap;
 }
 
 }
@@ -230,7 +238,7 @@ nav{
 
 <div class="logo">EETA<span>2K26</span></div>
 
-<div class="menu-toggle" id="menuToggle">☰</div>
+<div class="menu-toggle" id="menuToggle">&#9776;</div>
 
 <div class="navlinks" id="navLinks">
 <a href="#">Home</a>
@@ -279,7 +287,19 @@ nav{
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
 
 <script>
-const isMobile = window.innerWidth <= 768;
+
+/* MOBILE MENU */
+const toggle=document.getElementById("menuToggle");
+const nav=document.getElementById("navLinks");
+
+toggle.onclick=()=>nav.classList.toggle("show");
+
+document.querySelectorAll(".navlinks a").forEach(link=>{
+link.onclick=()=>nav.classList.remove("show");
+});
+
+/* PARTICLES */
+const isMobile=window.innerWidth<=768;
 
 tsParticles.load({
 id:"tsparticles",
@@ -292,16 +312,22 @@ modes:{repulse:{distance:100,duration:.4}}
 },
 particles:{
 color:{value:"#ffffff"},
-links:{color:"#ffffff",distance:120,enable:true,opacity:.15,width:1},
+links:{
+color:"#ffffff",
+distance:120,
+enable:true,
+opacity:.15,
+width:1
+},
 move:{
 enable:true,
-speed:isMobile ? 2 : 5,
-direction:"none",
-random:false,
-straight:false,
+speed:isMobile?2:4,
 outModes:{default:"bounce"}
 },
-number:{density:{enable:true,area:800},value:isMobile ? 120 : 277},
+number:{
+density:{enable:true,area:800},
+value:isMobile?90:180
+},
 opacity:{value:.3},
 shape:{type:"circle"},
 size:{value:{min:1,max:3}}
@@ -310,20 +336,6 @@ detectRetina:true
 }
 });
 
-/* MOBILE MENU TOGGLE */
-const toggle=document.getElementById("menuToggle");
-const nav=document.getElementById("navLinks");
-
-toggle.addEventListener("click",()=>{
-nav.classList.toggle("show");
-});
-
-/* CLOSE MENU AFTER CLICK */
-document.querySelectorAll("#navLinks a").forEach(link=>{
-link.addEventListener("click",()=>{
-nav.classList.remove("show");
-});
-});
 </script>
 
 </body>
